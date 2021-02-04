@@ -25,7 +25,7 @@ const CompleteWeatherList = (props) => {
     }, [])
     return (
         <div>
-            <h4 className="pt-4" >Current Weather List Of Various Cities:-</h4>
+            <h4 className="pt-4 pb-2" >Current Weather List Of Various Cities:-</h4>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>

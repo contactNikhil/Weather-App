@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'weather-icons/css/weather-icons.css';
 import axios from 'axios';
 
@@ -13,11 +13,13 @@ const Weather = (props) => {
     const [temp_max, setMaxTemp] = useState(null);
     const [weather, setWeather] = useState(null);
     const [weatherID, setWeatherID] = useState(null);
-
+    const inputRef = useRef(null)
+    const dataArray = ['Chandigarh', 'Lahore', 'Canada', 'USA']
     useEffect(() => {
         axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${search_city}&appid=${API_KEY}`)
             .then(res => {
                 console.log(res.data)
+                inputRef.current.focus();
                 setName(res.data.name)
                 setTemp(res.data.main.temp)
                 setMinTemp(res.data.main.temp_min)
@@ -29,7 +31,6 @@ const Weather = (props) => {
                 console.log(err)
             })
     }, [search_city, weatherID]);
-
     const minMaxTemp = (temp_min, temp_max) => {
 
         return (
@@ -73,12 +74,19 @@ const Weather = (props) => {
             return 'http://openweathermap.org/img/wn/01d@2x.png';
         }
     }
+
     return (<div className="container">
         <div className="cards">
 
             <form onSubmit={submitHandler}>
+
                 <label>Enter City Name <span>&nbsp;</span></label>
-                <input type="text" value={search_city} onChange={(e) => setSearchCity(e.target.value)} />
+                <input type="text" list="data" value={search_city} ref={inputRef} onChange={(e) => setSearchCity(e.target.value)} />
+                <datalist id="data">
+                    {dataArray.map((item, key) =>
+                        <option key={key} value={item} />
+                    )}
+                </datalist>
             </form>
             <h2 className="pt-2"> <u> {name} </u></h2>
             {weatherID !== null &&
@@ -87,6 +95,8 @@ const Weather = (props) => {
                     <h2 className="py-2">{(temp - 273.15).toFixed(2)}&deg;C           </h2>
                     <h4 className="py-4"> {minMaxTemp(temp_min, temp_max)}  </h4>
                     <h5 className="py-2"> {weather.toUpperCase()} </h5>
+                    <div className="line-break mt-2 mb-2">
+                    </div>
                 </div>
             }
         </div>

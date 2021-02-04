@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'weather-icons/css/weather-icons.css';
 import axios from 'axios';
 
+
 const API_KEY = "8a9d27ce0b11afef8878bf5bd490dae5";
 
 const Weather = (props) => {
@@ -35,8 +36,8 @@ const Weather = (props) => {
             <div>
                 {temp_min !== null && temp_max !== null &&
                     <h3>
-                        <span>{temp_min - 273.15.toFixed(2)}&deg;C</span>
-                        <span> {temp_max - 273.15.toFixed(2)}&deg;C</span>
+                        <span>{(temp_min - 273.15).toFixed(2)}&deg;C</span>
+                        <span> {(temp_max - 273.15).toFixed(2)}&deg;C</span>
                     </h3>
                 }
             </div>
@@ -83,7 +84,7 @@ const Weather = (props) => {
             {weatherID !== null &&
                 <div>
                     <img src={`${weatherIcon(weatherID)}`} alt="Weather"></img>
-                    <h2 className="py-2">{temp - 273.15.toFixed(2)}&deg;C           </h2>
+                    <h2 className="py-2">{(temp - 273.15).toFixed(2)}&deg;C           </h2>
                     <h4 className="py-4"> {minMaxTemp(temp_min, temp_max)}  </h4>
                     <h5 className="py-2"> {weather.toUpperCase()} </h5>
                 </div>

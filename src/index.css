@@ -12,9 +12,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(135deg, #fffacd, violet);
+  background-clip: text;
+  color: transparent;
+  padding: 0.5em;
+  box-decoration-break: clone;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+main {
+  font-family: 'Potta One', cursive;
+  text-decoration-line: underline;
+  text-decoration-style: double;
 }

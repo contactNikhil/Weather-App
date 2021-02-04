@@ -49,10 +49,8 @@ const Weather = (props) => {
     }
     const weatherIcon = (id) => {
         let myInterval = id;
-        if (myInterval < 0) {
-            // I'm guessing this is an error
-        }
-        else if (myInterval >= 200 && myInterval <= 232) {
+        //Trying to do range-wise instead of icon from res.data.weather[1]
+        if (myInterval >= 200 && myInterval <= 232) {
             return 'http://openweathermap.org/img/wn/11d@2x.png';
         }
         else if (myInterval >= 300 && myInterval <= 321) {

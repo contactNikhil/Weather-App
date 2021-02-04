@@ -50,7 +50,7 @@ const CompleteWeatherList = (props) => {
                                 <td>{city[1].main.temp_min}</td>
                                 <td>{city[1].main.temp_max}</td>
                                 <td>{city[1].weather[0].description.toUpperCase()}</td>
-                                <td><img src={`http://openweathermap.org/img/wn/${city[1].weather[0].icon}@2x.png`} style={{ height: "40px" }} /></td>
+                                <td><img src={`http://openweathermap.org/img/wn/${city[1].weather[0].icon}@2x.png`} alt="Weather Description" style={{ height: "40px" }} /></td>
                                 {console.log(city)}
                             </tr>
                         )
